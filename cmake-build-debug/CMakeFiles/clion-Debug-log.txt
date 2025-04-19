@@ -13,14 +13,14 @@ CMake Error at C:/Users/Jack Kennedy/AppData/Local/Programs/CLion/bin/cmake/win/
 
   It fails with the following output:
 
-    Change Dir: '//wsl.localhost/Ubuntu/home/jack_kennedy/programming/languages/c/bank_system/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-oet2ei'
+    Change Dir: '//wsl.localhost/Ubuntu/home/jack_kennedy/programming/languages/c/bank_system/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-f7we9b'
     
-    Run Build Command(s): "C:/Users/Jack Kennedy/AppData/Local/Programs/CLion/bin/ninja/win/x64/ninja.exe" -v cmTC_57ed9
-    [1/2] C:\Users\JACKKE~1\AppData\Local\Programs\CLion\bin\mingw\bin\gcc.exe    -o CMakeFiles\cmTC_57ed9.dir\testCCompiler.c.obj -c \\wsl.localhost\Ubuntu\home\jack_kennedy\programming\languages\c\bank_system\cmake-build-debug\CMakeFiles\CMakeScratch\TryCompile-oet2ei\testCCompiler.c
-    FAILED: CMakeFiles/cmTC_57ed9.dir/testCCompiler.c.obj 
-    C:\Users\JACKKE~1\AppData\Local\Programs\CLion\bin\mingw\bin\gcc.exe    -o CMakeFiles\cmTC_57ed9.dir\testCCompiler.c.obj -c \\wsl.localhost\Ubuntu\home\jack_kennedy\programming\languages\c\bank_system\cmake-build-debug\CMakeFiles\CMakeScratch\TryCompile-oet2ei\testCCompiler.c
+    Run Build Command(s): "C:/Users/Jack Kennedy/AppData/Local/Programs/CLion/bin/ninja/win/x64/ninja.exe" -v cmTC_69ac7
+    [1/2] C:\Users\JACKKE~1\AppData\Local\Programs\CLion\bin\mingw\bin\gcc.exe    -o CMakeFiles\cmTC_69ac7.dir\testCCompiler.c.obj -c \\wsl.localhost\Ubuntu\home\jack_kennedy\programming\languages\c\bank_system\cmake-build-debug\CMakeFiles\CMakeScratch\TryCompile-f7we9b\testCCompiler.c
+    FAILED: CMakeFiles/cmTC_69ac7.dir/testCCompiler.c.obj 
+    C:\Users\JACKKE~1\AppData\Local\Programs\CLion\bin\mingw\bin\gcc.exe    -o CMakeFiles\cmTC_69ac7.dir\testCCompiler.c.obj -c \\wsl.localhost\Ubuntu\home\jack_kennedy\programming\languages\c\bank_system\cmake-build-debug\CMakeFiles\CMakeScratch\TryCompile-f7we9b\testCCompiler.c
     Assembler messages:
-    Fatal error: can't create CMakeFiles\cmTC_57ed9.dir\testCCompiler.c.obj: Invalid argument
+    Fatal error: can't create CMakeFiles\cmTC_69ac7.dir\testCCompiler.c.obj: Invalid argument
     ninja: build stopped: subcommand failed.
     
     
