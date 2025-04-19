@@ -5,13 +5,13 @@
 #ifndef ACCOUNTS_H
 #define ACCOUNTS_H
 
-typedef struct Account {
+typedef struct {
 	char account_name[50];
 	int account_number;
 	double savings_balance;
 	double current_balance;
 } Account;
 
-void print_accounts();
+void print_accounts(int size, Account *accounts);
 
 #endif //ACCOUNTS_H

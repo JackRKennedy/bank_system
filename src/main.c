@@ -22,7 +22,7 @@ int main(void) {
 
 	printf("Which account would you like to access?\n");
 
-	print_accounts(size, *accounts);
+	print_accounts(size, accounts);
 
 	free (accounts); // free memory from accounts array implementation
 	return 0;
