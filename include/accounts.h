@@ -12,6 +12,8 @@ typedef struct {
 	double current_balance;
 } Account;
 
+int count_rows(const char *filename);
+
 void print_accounts(const char *filename);
 
 void print_account_balances(const char *filename, int account_number);

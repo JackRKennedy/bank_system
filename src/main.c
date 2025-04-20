@@ -5,31 +5,9 @@
 
 #include "../include/accounts.h"
 
-int count_rows(const char *filename) {
-	FILE *file = fopen(filename,"r"); // opening in write mode, nothing to update
-	// handle errors with opening file
-	if (file == NULL) {
-		perror("Error opening file");
-		fclose(file);
-		return -1; // closes application with error
-	}
-	int count = 0;
-	char line[1024];
-	fgets(line, sizeof(line), file); // get header row and skip it
-
-	// perform while loop search now to return true count
-	while (fgets(line, sizeof(line), file) != NULL) { // while row is not empty
-		// check if the line isn't empty or contains only whitespace:
-		if (strlen(line) > 1 && !strspn(line, " \t\n\r\f\v")) {
-			count++;
-		}
-	}
-	fclose(file); // close file after reading
-	return count;
-}
-
 int main(void) {
 	char *filename = "csv/accounts.csv";
+	int num_accounts = count_rows(filename);
 	// int size = count_rows(filename); // get number of rows in csv file
 
 	//adding two boilerplate accounts
@@ -40,30 +18,56 @@ int main(void) {
 	accounts[1] = acc2;
 	*/
 
-	printf("Welcome to the banking system\n");
 	bool quit = false;
-	char option = scanf("What would you like to do?");
-	while (quit == false)
-	switch (option) {
-		case 'l': //login to selected account
-			printf("Which account would you like to access?\n");
+
+	while (!quit){
+		printf("\nWelcome to our banking system, we are a growing branch with %d accounts and counting!\n", num_accounts);
+
+		char input[3]; // allow for an input buffer
+
+		printf("How can we help you today?\n");
+		printf("q:\tquit\na:\tadd account\nd:\tdelete account\nl:\tlogin\n\n");
+
+		// check for errors with the input - should be one character in length with no newline
+		if (fgets(input, sizeof(input), stdin) == NULL) {
+			perror("Error reading input");
+			exit(EXIT_FAILURE);
+		}
+
+		// Remove the newline character if present
+		input[strcspn(input, "\n")] = 0;
+
+		// cannot be larger than one character
+		if (strlen(input) > 1) {
+			printf("Invalid input: Please enter only one character.\n");
+			continue; // Go to the next iteration of the loop
+		}
+
+		char option = input[0]; // Extract the first character
+
+
+		switch (option) {
+			case 'l': //login to selected account
+				printf("Which account would you like to access?\n");
 
 			print_accounts(filename);
 			break;
-		case 'q': //quit
-			printf("Thank you for using the banking system\n");
+			case 'q': //quit
+				printf("Thank you for using the banking system\n");
 			quit = true;
 			break;
-		case 'a': // add account
-			add_account(filename);
+			case 'a': // add account
+				add_account(filename);
 			break;
-		case 'd': // delete account
-			delete_account(filename);
+			case 'd': // delete account
+				delete_account(filename);
 			break;
-		case '?': // unrecognised input
-			perror("That is an unrecognised value, please double check the valid options\n");
-		default:
-			break;
+			case '?': // unrecognised input
+				perror("That is an unrecognised value, please double check the valid options\n");
+			default:
+				printf("Invalid input: Please enter a valid option\n");
+				break;
+		}
+		return 0;
 	}
-	 return 0;
 }

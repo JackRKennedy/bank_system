@@ -6,6 +6,30 @@
 #include <stdio.h>
 #include "../include/accounts.h"
 
+// calculates the number of accounts:
+int count_rows(const char *filename) {
+	FILE *file = fopen(filename,"r"); // opening in write mode, nothing to update
+	// handle errors with opening file
+	if (file == NULL) {
+		perror("Error opening file");
+		fclose(file);
+		return -1; // closes application with error
+	}
+	int count = 0;
+	char line[1024];
+	fgets(line, sizeof(line), file); // get header row and skip it
+
+	// perform while loop search now to return true count
+	while (fgets(line, sizeof(line), file) != NULL) { // while row is not empty
+		// check if the line isn't empty or contains only whitespace:
+		if (strlen(line) > 1 && !strspn(line, " \t\n\r\f\v")) {
+			count++;
+		}
+	}
+	fclose(file); // close file after reading
+	return count;
+}
+
 // reads from csv file and prints account information
 void print_accounts(const char *filename) {
 	printf("List of available accounts: \n");
@@ -52,7 +76,13 @@ void print_accounts(const char *filename) {
 		perror("Error closing file");
 	}
 }
+void login(const char *filename, int account_number) {
+}
 
-void login(const char *filename) {
+void delete_account(const char *filename) {
+
+}
+
+void add_account(const char *filename) {
 
 }
