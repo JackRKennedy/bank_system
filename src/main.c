@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -40,10 +41,29 @@ int main(void) {
 	*/
 
 	printf("Welcome to the banking system\n");
+	bool quit = false;
+	char option = scanf("What would you like to do?");
+	while (quit == false)
+	switch (option) {
+		case 'l': //login to selected account
+			printf("Which account would you like to access?\n");
 
-	printf("Which account would you like to access?\n");
-
-	print_accounts(filename);
-
-	return 0;
+			print_accounts(filename);
+			break;
+		case 'q': //quit
+			printf("Thank you for using the banking system\n");
+			quit = true;
+			break;
+		case 'a': // add account
+			add_account(filename);
+			break;
+		case 'd': // delete account
+			delete_account(filename);
+			break;
+		case '?': // unrecognised input
+			perror("That is an unrecognised value, please double check the valid options\n");
+		default:
+			break;
+	}
+	 return 0;
 }

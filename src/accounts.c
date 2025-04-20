@@ -9,7 +9,7 @@
 // reads from csv file and prints account information
 void print_accounts(const char *filename) {
 	printf("List of available accounts: \n");
-	printf("Account Number | Account Name | Savings Balance $ | Current Balance $\n");
+	printf("Account Number | Account Name |\n");
 
 	FILE *file = fopen(filename, "r");
 	if (file == NULL) {
@@ -22,9 +22,15 @@ void print_accounts(const char *filename) {
 	fgets(line, sizeof(line), file); // skip header file
 
 	while (fgets(line, sizeof(line), file) != NULL) { // go through remaining lines
+		if (ferror(file)) {
+			perror("Error reading file");
+			fclose(file);
+			return; // if any errors with reading file close the function
+		}
 		char *token = strtok(line, ","); // split line into tokens
+		int fieldCount = 0; // field count variable so i can iterate through cells in a row
 
-		while (token != NULL) {
+		while (token != NULL && fieldCount < 2) { // only iterate through the first two cells to show infromation
 			//remove leading/trailing whitespace
 			char *start = token;
 			while (*start == ' ' || *start == '\t') {
@@ -38,10 +44,15 @@ void print_accounts(const char *filename) {
 
 			printf("%s | ", start); // print current cell value
 			token = strtok(NULL, ","); // get next token
+			fieldCount++;
 		}
 		printf("\n"); // print new line at the end of the current line
 		}
 	if (fclose(file) != 0) {
 		perror("Error closing file");
 	}
+}
+
+void login(const char *filename) {
+
 }
