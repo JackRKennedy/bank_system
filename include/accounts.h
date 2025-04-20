@@ -6,12 +6,12 @@
 #define ACCOUNTS_H
 
 typedef struct {
-	char account_name[50];
 	int account_number;
+	char account_name[50];
 	double savings_balance;
 	double current_balance;
 } Account;
 
-void print_accounts(int size, Account *accounts);
+void print_accounts(const char *filename);
 
 #endif //ACCOUNTS_H
